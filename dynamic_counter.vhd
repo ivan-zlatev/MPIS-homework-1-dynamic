@@ -43,19 +43,3 @@ end generate F;
 q <= temp;
 carry <= c(2);
 end Behavioral;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

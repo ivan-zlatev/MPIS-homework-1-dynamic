@@ -15,7 +15,7 @@ architecture Behavioral of dynamic_counter_test is
 	signal clock_run: boolean := true;
 	constant clock_period: time := 10 ns;
 	constant WIDTH: integer := N*4;
-	signal temp: unsigned (N-1 downto 0);
+--	signal temp: unsigned (4*N-1 downto 0);
 begin
 	uut: entity work.dynamic_counter port map (
 		clock => clock,
@@ -49,11 +49,16 @@ begin
 		assert carry = '0' report "Err2 carry is not zero after reset=0";
 		
 		-- Err3 - testing for counting up 0 to 10^N
+--		reset <= '1';
+--		wait until rising_edge(clock);
+--		reset <= '0';
 --		for i in 0 to 10**N-1 loop
---		temp <= to_unsigned(i,N);
+--		temp <= to_unsigned(i,4*N);
+--		wait until falling_edge(clock);
 --			for j in 1 to N loop
---				assert q(j*4-1 downto j*4-4) = to_unsigned(temp(j-1), N) report "Err3";
+--				assert q(j*4-1 downto j*4-4) = temp(j*4-1 downto j*4-4) report "Err3";
 --			end loop;
+--		wait until rising_edge(clock);
 --		end loop;
 
 		-- Err4 - testing for carry signal after q overflow
