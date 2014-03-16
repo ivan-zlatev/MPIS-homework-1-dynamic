@@ -36,7 +36,7 @@ F : for i in 1 to N generate
 		begin U2 : entity work.bcd_counter port map     
 			(clock => c(i-2),
 			reset => reset,
-         q => temp(4*i-1 downto 4*i-4),
+			q => temp(4*i-1 downto 4*i-4),
 			carry => c(i-1));
 	end generate F2;
 end generate F;
